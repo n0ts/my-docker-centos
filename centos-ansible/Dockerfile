@@ -5,17 +5,16 @@ MAINTAINER Naoya Nakazawa <naoya.n@gmail.com>
 ENV user centos
 ENV group centos
 
-RUN \
-    yum install -y python2-boto python2-boto3 python-passlib openssl-devel ansible \
+RUN set -x \
+    && yum install -y python2-boto python2-boto3 python-passlib openssl-devel ansible \
     && pip install ansible-lint \
     && pip install --upgrade ansible \
 
     # install human_log callback plugin
     # https://github.com/n0ts/ansible-human_log/
     && mkdir -p /usr/share/ansible/plugins/callback \
-    && wget -N \
-             https://raw.githubusercontent.com/n0ts/ansible-human_log/master/human_log.py \
-             -P /usr/share/ansible/plugins/callback/ \
+    && curl -L -o /usr/share/ansible/plugins/callback/human_log.py \
+           https://raw.githubusercontent.com/n0ts/ansible-human_log/master/human_log.py \
 
     # change ansible configuration
     && sed -i 's/#retry_files_enabled = False/retry_files_enabled = False/g' /etc/ansible/ansible.cfg \

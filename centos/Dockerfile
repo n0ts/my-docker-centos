@@ -6,8 +6,8 @@ ENV user centos
 ENV group centos
 ENV work /work
 
-RUN \
-    yum clean all \
+RUN set -x \
+    && yum clean all \
     && yum install -y epel-release \
     && yum upgrade -y \
     && yum groupinstall -y "Development Tools" \
