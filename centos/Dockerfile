@@ -7,8 +7,7 @@ ENV group centos
 ENV work /work
 
 RUN set -x \
-    && yum clean all \
-    && yum install -y epel-release \
+    && yum install -y epel-release centos-release-scl \
     && yum upgrade -y \
     && yum groupinstall -y "Development Tools" \
     && yum install -y bash-completion \
@@ -24,6 +23,8 @@ RUN set -x \
 
     # create work directory
     && mkdir ${work} \
-    && chown -R ${user}:${group} ${work}
+    && chown -R ${user}:${group} ${work} \
+
+    && yum clean all
 
 CMD ["/bin/bash"]
