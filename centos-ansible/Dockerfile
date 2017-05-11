@@ -30,6 +30,8 @@ RUN set -x \
     && chown -v -R root:${group} /var/log/ansible \
     && sed -i 's/#log_path = \/var\/log\/ansible.log/log_path = \/var\/log\/ansible\/ansible.log/g' /etc/ansible/ansible.cfg \
 
+    && yum clean all \
+
     && ansible-lint --version \
     && ansible --version
 
