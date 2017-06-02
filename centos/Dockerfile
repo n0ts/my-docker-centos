@@ -15,6 +15,7 @@ RUN set -x \
                       initscripts \
                       less the_silver_searcher \
                       sudo tree unzip vim wget zsh \
+                      mariadb postgresql redis \
 
     # add local user
     && groupadd ${user} \
