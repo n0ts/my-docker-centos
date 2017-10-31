@@ -6,6 +6,7 @@ RUN set -x \
     && yum install -y python-pip python-devel python-virtualenv \
     && yum clean all \
     && pip install --upgrade pip \
+    && pip install jq \
     && python --version \
     && pip --version
 

@@ -15,7 +15,7 @@ RUN set -x \
                       initscripts \
                       less the_silver_searcher \
                       sudo tree unzip vim wget zsh \
-                      nc telnet \
+                      jq nc telnet \
                       mariadb postgresql redis \
 
     # add local user
