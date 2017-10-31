@@ -13,8 +13,11 @@ RUN set -x \
     # install human_log callback plugin
     # https://github.com/n0ts/ansible-human_log/
     && mkdir -p /usr/share/ansible/plugins/callback \
-    && curl -L -o /usr/share/ansible/plugins/callback/human_log.py \
-           https://raw.githubusercontent.com/n0ts/ansible-human_log/master/human_log.py \
+    && curl -L -o /etc/ansible/ansible.cfg \
+        https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg \
+    && curl -L -o /etc/ansible/hosts \
+        https://raw.githubusercontent.com/ansible/ansible/devel/examples/hosts \
+    && mkdir /etc/ansible/roles \
 
     # change ansible configuration
     && sed -i 's/#retry_files_enabled = False/retry_files_enabled = False/g' /etc/ansible/ansible.cfg \
