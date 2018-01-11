@@ -17,7 +17,6 @@ RUN set -x \
         https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg \
     && curl -L -o /etc/ansible/hosts \
         https://raw.githubusercontent.com/ansible/ansible/devel/examples/hosts \
-    && mkdir /etc/ansible/roles \
 
     # change ansible configuration
     && sed -i 's/#retry_files_enabled = False/retry_files_enabled = False/g' /etc/ansible/ansible.cfg \
